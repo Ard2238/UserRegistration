@@ -22,11 +22,14 @@ public class UserRegistration {
 		return Pattern.matches("[0-9]{2}\\s[0-9]{10}", number);
 	}
 	
-	/* UC5 -- Validate Password
+	/* UC5 -- UC8 Validate Password
 	 * Rule 1. Minimum 8 characters
+	 * Rule 2. At least one Upper Case character
+	 * Rule 3. At least one numeric character
+	 * Rule 4. Exactly one special character
 	 * */
 	private static boolean validatePassword(String password) {
-		return Pattern.matches("(?=.*\\d)(?=.*[A-Z]).{8,}", password);
+		return Pattern.matches("(?=.*\\d)(?=.*[A-Z])?(?=.*\\W).{8,}", password);
 	}
 	
 	public static void main(String[] args) {		
