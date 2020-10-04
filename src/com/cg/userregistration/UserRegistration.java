@@ -14,7 +14,7 @@ public class UserRegistration {
 	
 	/* UC3 -- Validate Email */
 	private static boolean validateEmail(String email) {		
-		return Pattern.matches("[a-z]+(.[a-z]+)*@{1}[a-z]+(.co){1}(.[a-z]+)*", email);
+		return Pattern.matches("[a-z]+(.[a-z0-9]+)*@{1}[a-z0-9]+[.][a-z]{2,}(.[a-z]+)*", email);
 	}
 	
 	/*UC4 -- Validate Mobile Number */
@@ -47,7 +47,7 @@ public class UserRegistration {
 		System.out.println(validateEmail(email)? "Valid Email." : "Invalid Email.");
 		
 		System.out.println("Enter the Mobile Number: ");
-		String number = sc.next();
+		String number = sc.nextLine();
 		System.out.println(validateMobile(number)? "Valid Mobile Number" : "Invalid Mobile Number");
 		
 		System.out.println("Enter the Password: ");
