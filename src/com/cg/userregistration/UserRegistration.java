@@ -3,7 +3,9 @@ package com.cg.userregistration;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class UserRegistration {
+public class UserRegistration {	
+	private static Scanner sc = new Scanner(System.in);
+	
 	/* UC1 -- Validate First Name */
 	/* UC2 -- Validate Last Name */
 	private static boolean validateName(String firstName) {
@@ -15,9 +17,13 @@ public class UserRegistration {
 		return Pattern.matches("[a-z]+(.[a-z]+)*@{1}[a-z]+(.co){1}(.[a-z]+)*", email);
 	}
 	
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);		
-		System.out.println("Welcom to User Registration Problem");
+	/*UC4 -- Validate Mobile Number */
+	private static boolean validateMobile(String number) {
+		return Pattern.matches("[0-9]{2}\\s[0-9]{10}", number);
+	}
+	
+	public static void main(String[] args) {		
+		System.out.println("Welcome to User Registration Problem");
 		System.out.println("Enter the first name: ");
 		String firstName = sc.next();
 		System.out.println(validateName(firstName)? "Valid First Name." : "Invalid First Name.");
@@ -29,6 +35,10 @@ public class UserRegistration {
 		System.out.println("Enter the email: ");
 		String email = sc.next();
 		System.out.println(validateEmail(email)? "Valid Email." : "Invalid Email.");
+		
+		System.out.println("Enter the Mobile Number: ");
+		String number = sc.next();
+		System.out.println(validateMobile(number)? "Valid Mobile Number" : "Invalid Mobile Number");
 		sc.close();
 	}
 
