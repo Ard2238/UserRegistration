@@ -26,7 +26,7 @@ public class UserRegistration {
 	 * Rule 1. Minimum 8 characters
 	 * */
 	private static boolean validatePassword(String password) {
-		return Pattern.matches("[^.]{8,}", password);
+		return Pattern.matches(".*[A-Z].*", password);
 	}
 	
 	public static void main(String[] args) {		
