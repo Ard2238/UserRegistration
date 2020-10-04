@@ -10,6 +10,11 @@ public class UserRegistration {
 		return Pattern.matches("[A-Z][a-z]{2,}", firstName);
 	}
 	
+	/* UC3 -- Validate Email */
+	private static boolean validateEmail(String email) {		
+		return Pattern.matches("[a-z]+(.[a-z]+)*@{1}[a-z]+(.co){1}(.[a-z]+)*", email);
+	}
+	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);		
 		System.out.println("Welcom to User Registration Problem");
@@ -20,6 +25,10 @@ public class UserRegistration {
 		System.out.println("Enter the last name: ");
 		String lastName = sc.next();
 		System.out.println(validateName(lastName)? "Valid Last Name." : "Invalid Last Name.");
+		
+		System.out.println("Enter the email: ");
+		String email = sc.next();
+		System.out.println(validateEmail(email)? "Valid Email." : "Invalid Email.");
 		sc.close();
 	}
 
