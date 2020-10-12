@@ -39,18 +39,39 @@ public class UserRegistration {
 	
 	/* UC1 -- Validate First Name */
 	/* UC2 -- Validate Last Name */
-	public boolean validateName(String firstName) {
-		return Pattern.matches("[A-Z][a-z]{2,}", firstName);
+	public boolean validateName(String Name) {
+		try {
+			if(Pattern.matches("[A-Z][a-z]{2,}", Name))
+				return true;
+			else
+				throw new RuntimeException();
+		}catch(RuntimeException e) {
+			throw new InvalidInputException("Invalid Name");
+		}
 	}
 	
 	/* UC3 -- Validate Email */
 	public boolean validateEmail(String email) {		
-		return Pattern.matches("[a-z]+([.-]?[a-z0-9]+)*[@][a-z0-9]+[.][a-z]{2,}(.[a-z]+)?", email);
+		try {
+			if(Pattern.matches("[a-z]+([.-]?[a-z0-9]+)*[@][a-z0-9]+[.][a-z]{2,}(.[a-z]+)?", email))
+				return true;
+			else
+				throw new RuntimeException();
+		}catch(RuntimeException e) {
+			throw new InvalidInputException("Invalid Email");
+		} 
 	}
 	
 	/*UC4 -- Validate Mobile Number */
 	public boolean validateMobile(String number) {
-		return Pattern.matches("[0-9]{2}\\s[0-9]{10}", number);
+		try {
+			if(Pattern.matches("[0-9]{2}\\s[0-9]{10}", number))
+				return true;
+			else
+				throw new RuntimeException();
+		}catch(RuntimeException e) {
+			throw new InvalidInputException("Invalid Mobile");
+		}
 	}
 	
 	/* UC5 -- UC8 Validate Password
@@ -59,20 +80,24 @@ public class UserRegistration {
 	 * Rule 3. At least one numeric character
 	 * Rule 4. Exactly one special character
 	 * */
-	public boolean validatePassword(String password) {
-		if(Pattern.matches("(?=.*\\d)(?=.*[A-Z])(?=.*[\\S]).{8,}", password)) {
-			String splchar = "[\\W]";
-			Pattern pat = Pattern.compile(splchar);
-			Matcher mat = pat.matcher(password);
-			int count = 0;
-			while(mat.find()) {count++ ; }
-			if(count == 1) {
-				System.out.println("Valid Password");
-				return true;
+	public boolean validatePassword(String password) {		
+		try {
+			if(Pattern.matches("(?=.*\\d)(?=.*[A-Z])(?=.*[\\S]).{8,}", password)) {
+				String splchar = "[\\W]";
+				Pattern pat = Pattern.compile(splchar);
+				Matcher mat = pat.matcher(password);
+				int count = 0;
+				while(mat.find()) {count++ ; }
+				if(count == 1) {
+					return true;
+				}
 			}
+			else
+				throw new RuntimeException();
+		}catch(RuntimeException e) {
+			throw new InvalidInputException("Invalid Password");
 		}
-		System.out.println("Invalid Password.");
-		return false;  	
+		return false;
 	}
 	
 	public static void main(String[] args) {		
