@@ -45,7 +45,7 @@ public class UserRegistration {
 	
 	/* UC3 -- Validate Email */
 	public boolean validateEmail(String email) {		
-		return Pattern.matches("[a-z]+(.[a-z0-9]+)*@{1}[a-z0-9]+[.][a-z]{2,}(.[a-z]+)*", email);
+		return Pattern.matches("[a-z]+([.-]?[a-z0-9]+)*[@][a-z0-9]+[.][a-z]{2,}(.[a-z]+)?", email);
 	}
 	
 	/*UC4 -- Validate Mobile Number */

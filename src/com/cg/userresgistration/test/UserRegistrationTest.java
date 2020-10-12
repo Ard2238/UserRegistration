@@ -23,8 +23,8 @@ public class UserRegistrationTest {
 		boolean[] case_false = { user_reg.validateName("ab"), user_reg.validateName("da"), user_reg.validateEmail("100.@.com.com"),  user_reg.validateEmail("9953503212"), user_reg.validatePassword("abhi@%#")};
 		boolean[] expected_false = {false, false, false, false, false};
 		
-		assertArrayEquals(expected_true, case_true);
-		assertArrayEquals(expected_false, case_false);
+		assertArrayEquals("Entry Successful", expected_true, case_true);
+		assertArrayEquals("Entry failed", expected_false, case_false);
 	}
 //	@Test
 //	public void validateDetails_FirstName() {
