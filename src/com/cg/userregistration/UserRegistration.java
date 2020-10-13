@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserRegistration {	
+public class UserRegistration{	
 	private static Scanner sc = new Scanner(System.in);
 	
 	private String firstName, lastName,email,number,password;
@@ -100,6 +100,23 @@ public class UserRegistration {
 		return false;
 	}
 	
+	public void validateInputForInterface() {
+		// TODO Auto-generated method stub		
+		InvalidInput i1 = firstName -> {return validateName(firstName);};
+		InvalidInput i2 = lastName -> {return validateName(lastName);};
+		InvalidInput i3 = email -> {return validateEmail(email);};
+		InvalidInput i4 = mobile -> {return validateMobile(mobile);};
+		InvalidInput i5 = pass -> {return validatePassword(pass);};
+		
+		boolean check_fname = i1.validateInput(firstName);
+		boolean check_lname = i2.validateInput(lastName);
+		boolean check_email = i3.validateInput(email);
+		boolean check_mobil = i4.validateInput(number);
+		boolean check_passw = i5.validateInput(password);
+		if( check_fname && check_lname && check_email && check_mobil && check_passw)
+			System.out.println("User Registered Successfully.");
+	}
+	
 	public static void main(String[] args) {		
 		System.out.println("Welcome to User Registration Problem");
 		System.out.println("Enter the first name: ");
@@ -115,7 +132,7 @@ public class UserRegistration {
 		
 		UserRegistration newUser = new UserRegistration(firstName, lastName, email, number, password);
 		newUser.initializeDetails();
+		newUser.validateInputForInterface();
 		sc.close();
 	}
-
 }
